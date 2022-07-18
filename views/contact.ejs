@@ -1,50 +1,54 @@
+<!-- mainbody -->
+<h1>Welcome in Contact</h1>
+<p>Hello Everybody</p>
+<h1>Contact List : </h1>
+<a href="/contact/add" class="btn btn-primary mt-3 mb-3">Add Contact Data</a>
 
-    <!-- mainbody -->
-      <h1>Welcome in Contact</h1>
-    <p>Hello Everybody</p>
-    <h1>Contact List : </h1>
-    <a href="/contact/add" class="btn btn-primary mt-3 mb-3">Add Contact Data</a>
+<% if (msg.length !== 0) { %>
+<div class="alert alert-success" role="alert">
+  <%= msg %>
+</div>
+<% } %>
+<!-- Membuat tabel menggunakan bootstrap -->
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% if (contacts.length < 1 ) { %>
+      <p>Contact Data empty</p>
+      <% } else {%>
+      <!-- Membuat nomor angka variable let i -->
+      <% let i = 1; %>
+      <% contacts.forEach((contact) => { %>
+    <tr>
+      <!-- Memanggil dan nomor -->
+      <th><%= i++ %> </th>
+      <td><%= contact.name %> </td>
+      <td><%= contact.email %> </td>
 
-    <% if (msg.length !== 0) { %>
-     <div class="alert alert-success" role="alert">
-      <%= msg %> 
-     </div>
+      <td><a href="/contact/<%= contact.name %>" class="btn btn-primary badge">detail</a>
+        <!-- Menambahkan update dan delete  -->
+        <a href="/contact/edit/<%= contact.name %>" class="btn btn-primary badge ml-1">update</a>
+        <a href="/contact/delete/<%= contact.name %>" class="btn btn-danger badge"
+          onclick="return comfirm('yakin?')">delete</a> </td>
+    </tr>
+    <% }) %>
     <% } %>
-    <!-- Membuat tabel menggunakan bootstrap -->
-    <table class="table table-dark table-striped">
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <% if (contacts.length < 1 ) { %>
-            <p>Contact Data empty</p>
-           <% } else {%>
-            <!-- Membuat nomor angka variable let i -->
-            <% let i = 1; %> 
-          <% contacts.forEach((contact) => { %>
-            <tr>
-            <!-- Memanggil dan nomor -->
-            <th><%= i++ %> </th>
-            <td><%= contact.name %> </td>
-            <td><%= contact.email %> </td>
-            <td><a href="/contact/<%= contact.name %>" class="btn btn-primary badge">detail</a> </td>
-          </tr>
-          <% }) %>
-          <% } %>
-        </tr>
-        <tr>
-         
-        </tr>
-      </tbody>
-    </table>
+    </tr>
+    <tr>
 
-    <!-- <ul>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <ul>
      
       <% if (contacts.length < 1 ) { %>
        <p>Contact Data empty</p>
@@ -57,4 +61,3 @@
       <% } %>
 
     </ul> -->
- 
