@@ -2,7 +2,7 @@
 <h1>Welcome in Contact</h1>
 <p>Hello Everybody</p>
 <h1>Contact List : </h1>
-<a href="/contact/add" class="btn btn-primary mt-3 mb-3">Add Contact Data</a>
+<a href="/contact/add" class="btn btn-primary mt-3 mb-3"><i class="bi bi-plus-square"></i> Add Contact Data</a>
 
 <% if (msg.length !== 0) { %>
 <div class="alert alert-success" role="alert">
@@ -16,7 +16,7 @@
       <th scope="col">No</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
-      <th scope="col">Action</th>
+      <th scope="col text-center">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -33,11 +33,13 @@
       <td><%= contact.name %> </td>
       <td><%= contact.email %> </td>
 
-      <td><a href="/contact/<%= contact.name %>" class="btn btn-primary badge">detail</a>
+      <td><a href="/contact/<%= contact.name %>" class="btn btn-primary "><i class="bi bi-card-heading"></i>
+          Detail</a>
         <!-- Menambahkan update dan delete  -->
-        <a href="/contact/edit/<%= contact.name %>" class="btn btn-primary badge ml-1">update</a>
-        <a href="/contact/delete/<%= contact.name %>" class="btn btn-danger badge"
-          onclick="return comfirm('yakin?')">delete</a> </td>
+        <a href="/contact/edit/<%= contact.name %>" class="btn btn-primary ml-1"><i class="bi bi-pencil-square"></i>
+          Update</a>
+        <a href="/contact/delete/<%= contact.name %>" class="btn btn-danger" onclick="return comfirm('yakin?')"><i
+            class="bi bi-trash-fill"></i> Delete</a> </td>
     </tr>
     <% }) %>
     <% } %>
